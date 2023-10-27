@@ -1,0 +1,3 @@
+https://reputation.alienvault.com/reputation.data
+https://urlhaus.abuse.ch/downloads/csv_recent
+https://openphish.com/feed.txt
