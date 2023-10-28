@@ -1,5 +1,5 @@
 """
-PLACEHOLDER
+Functions for handling opening on disk and downloading files from web pages.
 """
 import os
 import requests
@@ -7,7 +7,7 @@ import requests
 # load urls from souces list and save them in to data_download folder
 def load_data():
     """
-    PLACEHOLDER
+    Downloads data from specified URLs and saves them to files on disk.
     """
     with open('data_sources/data_sources.txt', 'r', encoding='utf-8') as file_data: # data_sources
         for line in file_data:
@@ -30,7 +30,7 @@ def load_data():
 # open downloaded file one by one, parse desired data and store them in variable
 def open_file(path):
     """
-    PLACEHOLDER
+    Open a text file at the specified path, extracts the data, returns a list of URLs, IP addresses.
     """
     _, file = os.path.split(path)
 

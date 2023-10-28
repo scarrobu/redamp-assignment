@@ -1,5 +1,6 @@
 """
-PLACEHOLDER
+This file contains SQLAlchemy classes data for creating tables and
+contains functions for creating table ans retrieving session connection.
 """
 from sqlalchemy import create_engine, Column, Integer, String, ForeignKey
 from sqlalchemy.ext.declarative import declarative_base
