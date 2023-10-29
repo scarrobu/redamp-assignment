@@ -9,23 +9,36 @@ def load_data():
     """
     Downloads data from specified URLs and saves them to files on disk.
     """
-    with open('data_sources/data_sources.txt', 'r', encoding='utf-8') as file_data: # data_sources
-        for line in file_data:
-            source_url = line.strip()
-            response = requests.get(source_url, timeout=3)
-            print('Opening ' + str(source_url) + ' status code: ' + str(response.status_code))
+    if not os.path.exists('data_download'):
+        os.mkdir('data_download')
 
-            if source_url == 'https://urlhaus.abuse.ch/downloads/csv_recent':
-                with open("data_download/urlhaus.abuse.ch.txt", "wb") as file:
-                    file.write(response.content)
+    try:
+        with open('data_sources/data_sources.txt', 'r', encoding='utf-8') as file_data:
+            for line in file_data:
+                source_url = line.strip()
+                response = requests.get(source_url, timeout=3)
+                print('Opening ' + str(source_url) + ' status code: ' + str(response.status_code))
 
-            if source_url == 'https://reputation.alienvault.com/reputation.data':
-                with open("data_download/reputation.txt", "wb") as file:
-                    file.write(response.content)
+                if source_url == 'https://urlhaus.abuse.ch/downloads/csv_recent':
+                    with open("data_download/urlhaus.abuse.ch.txt", "wb") as file:
+                        file.write(response.content)
 
-            if source_url == 'https://openphish.com/feed.txt':
-                with open("data_download/feed.txt", "wb") as file:
-                    file.write(response.content)
+                if source_url == 'https://reputation.alienvault.com/reputation.data':
+                    with open("data_download/reputation.txt", "wb") as file:
+                        file.write(response.content)
+
+                if source_url == 'https://openphish.com/feed.txt':
+                    with open("data_download/feed.txt", "wb") as file:
+                        file.write(response.content)
+
+            print("All files was downloaded successfully, insert data in to DB with (main.py fill)")
+
+    except FileNotFoundError:
+        print('ERROR: Folder "data_sources" or file "data_sources.txt" does not exists!')
+        print('       Folder was created for you.')
+        print('       Please provide file "data_sources.txt" with correct data (links of pages).')
+        if not os.path.exists('data_sources'):
+            os.mkdir('data_sources')
 
 # open downloaded file one by one, parse desired data and store them in variable
 def open_file(path):

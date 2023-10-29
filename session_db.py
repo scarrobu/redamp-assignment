@@ -49,3 +49,5 @@ def fill_db():
         url_adress = URL(url=url, source_id=3) # mark source as nr. 3 from data_sources list
         session.add(url_adress)
     session.commit()
+
+    print("Databases was successfully filled with data from sources, your DB is ready.")
