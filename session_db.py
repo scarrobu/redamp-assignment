@@ -70,4 +70,5 @@ def fill_db():
     if error == 0:
         print("Databases was successfully filled with data from sources, your DB is ready.")
     else:
+        print("Databases was successfully created only with data where you dont get error.")
         print('You have ', error, ' errors.')
