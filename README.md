@@ -1,3 +1,4 @@
+
 # Task 
 Your task is to implement a command line application that will process and store
 malicious IOCs from all specified data sources on the Internet into a database.
@@ -25,3 +26,8 @@ and finally:
 This download the data, create database file (initial is sqlite named "malicious_IOC.db" in my_app/ directory).
 Engine can be changed on file create_db.py on line 30.
 I tested posgres with my PGAdmin.
+
+### Notes
+Second branch named over-time existt in this repository.
+On this branch i have code that i worked on after submiting code in master branch.
+Added few error handling, file ans folder exist checks or change code to achieve high pylint score

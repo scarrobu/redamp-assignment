@@ -51,7 +51,6 @@ def create_db():
                            tables=[DataSource.__table__, IPAddress.__table__, URL.__table__])
     Base.metadata.create_all(engine)
 
-    print("Empty DB file was created successfully, continue with downloading data (main.py load)")
     return engine
 
 # used in session_db to fill database

@@ -7,8 +7,7 @@ Main file, usage:
 """
 import sys
 
-from functions import load_data, open_file
-from create_db import create_db
+from functions import load_data
 from session_db import fill_db
 
 
@@ -17,7 +16,6 @@ if __name__ == "__main__":
         if sys.argv[1] == 'load':
             load_data()
         elif sys.argv[1] == 'fill':
-            open_file('d')
             fill_db()
         else:
             print('Unknown argument, please use only: load|fill.')

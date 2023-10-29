@@ -14,10 +14,17 @@ def load_data():
 
     try:
         with open('data_sources/data_sources.txt', 'r', encoding='utf-8') as file_data:
+            error = 0
             for line in file_data:
                 source_url = line.strip()
-                response = requests.get(source_url, timeout=3)
-                print('Opening ' + str(source_url) + ' status code: ' + str(response.status_code))
+                try:
+                    response = requests.get(source_url, timeout=3)
+                    print('Opening ' +str(source_url)+ ' status code: ' +str(response.status_code))
+                except Exception:
+                    error += 1
+
+                if response.status_code != 200:
+                    error += 1
 
                 if source_url == 'https://urlhaus.abuse.ch/downloads/csv_recent':
                     with open("data_download/urlhaus.abuse.ch.txt", "wb") as file:
@@ -31,7 +38,10 @@ def load_data():
                     with open("data_download/feed.txt", "wb") as file:
                         file.write(response.content)
 
-            print("All files was downloaded successfully, insert data in to DB with (main.py fill)")
+            if error == 0:
+                print("\nAll files downloaded successfully, insert data in to DB (main.py fill)")
+            else:
+                print('\n'+str(error)+ ' error in your requests, check the status code above.')
 
     except FileNotFoundError:
         print('ERROR: Folder "data_sources" or file "data_sources.txt" does not exists!')
@@ -74,7 +84,6 @@ def open_file(path):
         with open(path, 'r', encoding='utf-8') as file_data:
             print('Open ', file)
             for line in file_data:
-                urladdress.append('"'+line.strip()+'"')
-                # no need to separate data, one line == one link
+                urladdress.append('"'+line.strip()+'"')# no need to separate data, each line == link
             print('Data are extracted')
             return urladdress
