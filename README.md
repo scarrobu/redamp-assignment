@@ -5,7 +5,7 @@ Your task is to implement a command line application that will process and store
 malicious IOCs from all specified data sources on the Internet into a database.
 
 ## Prerequisites
-Python 3.10.4, SQLAlchemy 2.0.22, requests 2.31.0
+Python 3.10.4, SQLAlchemy 2.0.22, requests 2.31.0, pytest 7.4.3
 
 ## Install 
 Need to install SQLAlchemy and requests
