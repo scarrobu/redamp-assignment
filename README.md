@@ -31,3 +31,7 @@ I tested posgres with my PGAdmin.
 Second branch named over-time existt in this repository.
 On this branch i have code that i worked on after submiting code in master branch.
 Added few error handling, file ans folder exist checks or change code to achieve high pylint score
+
+Third branch named testing existt in this repository.
+On this branch i try use pytest for some tests, after submiting code in master branch.
+For now i have implemented test for exist dirs and data files and funciton open_file test.
